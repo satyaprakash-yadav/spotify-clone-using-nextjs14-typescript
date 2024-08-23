@@ -6,8 +6,6 @@ import { Price, Product } from "@/types";
 
 import { stripe } from "./stripe";
 import { toDateTime } from "./helpers";
-import { error } from "console";
-import { metadata } from "@/app/layout";
 
 export const supabaseAdmin = createClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL || '',
@@ -61,7 +59,7 @@ const upsertPriceRecord = async (price: Stripe.Price) => {
     console.log(`Price inserted/updated: ${price.id}`);
 }
 
-const createOrRetrieveACustomer = async ({
+const createOrRetrieveCustomer = async ({
     email,
     uuid
 }: {
@@ -179,4 +177,4 @@ const manageSubscriptionStatusChange = async (
     }
 };
 
-export { upsertProductRecord, upsertPriceRecord, createOrRetrieveACustomer, manageSubscriptionStatusChange };
+export { upsertProductRecord, upsertPriceRecord, createOrRetrieveCustomer, manageSubscriptionStatusChange };
